@@ -1,6 +1,10 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+Bureaucrat::Bureaucrat() : name("<name>"), grade(150)
+{
+}
+
 Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade) : name(name)
 {
     if (grade < 1)

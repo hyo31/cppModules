@@ -8,10 +8,9 @@ class Bureaucrat
     private:
         const std::string   name;
         unsigned int        grade;
-    
-        Bureaucrat() : name("<name>"), grade(150){};
 
     public:
+        Bureaucrat();
         Bureaucrat(const std::string &name, unsigned int grade);
         Bureaucrat(const Bureaucrat &copy);
         Bureaucrat &operator=(const Bureaucrat &copy);
@@ -25,18 +24,18 @@ class Bureaucrat
         class GradeTooHighException : public std::exception
         {
             public:
-                char *what()
+                virtual const char *what() const throw()
                 {
-                    return ((char *)"Grade too high!");
+                    return ("Grade too high!");
                 }
         };
         
         class GradeTooLowException : public std::exception
         {
             public:
-                char *what()
+                virtual const char *what() const throw()
                 {
-                    return ((char *)"Grade too low!");
+                    return ("Grade too low!");
                 }
         };
 };

@@ -1,16 +1,16 @@
 #include "../inc/RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : target(target), Form("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : Form("RobotomyRequestForm", 72, 45), target(target)
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : target(copy.target), Form(copy)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : Form(copy), target(copy.target)
 {
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &copy)
 {
-    *this = copy;
+    (void)copy;
     return (*this);
 }
 

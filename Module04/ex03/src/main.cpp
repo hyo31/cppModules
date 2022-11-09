@@ -16,25 +16,25 @@ int main()
     
     me->use(0, *bob);
     me->use(1, *bob);
-    
+    std::cout << "----------------\n";
     tmp = src->createMateria("ice");
     me->equip(tmp);
     me->use(0, *henk);
     me->use(1, *henk);
-
+    std::cout << "----------------\n";
     tmp = src->createMateria("cure");
     me->equip(tmp);
     me->use(0, *kees);
     me->use(1, *kees);
-
-    //me->unequip(0);
-    //me->use(0, *henk);
-    //me->use(1, *henk);
-//
-    //me->unequip(1);
-    //me->use(0, *bob);
-    //me->use(1, *bob);
-    
+    std::cout << "----------------\n";
+    me->unequip(0);
+    me->use(0, *henk);
+    me->use(1, *henk);
+    std::cout << "----------------\n";
+    me->unequip(1);
+    me->use(0, *bob);
+    me->use(1, *bob);
+    std::cout << "----------------\n";
     delete bob;
     delete henk;
     delete kees;

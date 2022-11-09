@@ -10,7 +10,7 @@
 class Intern
 {
     private:
-        std::map<std::string, Form*> Forms;
+        Form *Forms[3];
     
     public:
         Intern();
@@ -23,9 +23,9 @@ class Intern
         class unknownForm : public std::exception
         {
 	        public:
-		        char *what()
+		        virtual const char *what() const throw()
                 {
-                    return ((char *)"Unknown form.");
+                    return ("Unknown form.");
                 }
         };
 

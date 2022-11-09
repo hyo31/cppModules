@@ -25,10 +25,10 @@ class WrongAnimal
         WrongAnimal();
         WrongAnimal(const WrongAnimal &copy);
         WrongAnimal &operator=(const WrongAnimal &copy);
-         ~WrongAnimal();
+        virtual ~WrongAnimal();
 
         std::string const &getType()const;
-         void    makeSound()const;
+        void    makeSound()const;
 };
 
 #endif

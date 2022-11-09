@@ -14,11 +14,11 @@ Character::Character(std::string name) : _name(name)
 
 Character::~Character()
 {
-    //for(int i = 0; i < 4; i++)
-    //{
-    //    if (this->inv[i])
-    //        delete(this->inv[i]);
-    //}
+    for(int i = 0; i < 4; i++)
+    {
+        if (this->inv[i])
+            delete(this->inv[i]);
+    }
 }
 
 Character::Character(const Character &src) : _name(src.getName())
@@ -67,4 +67,6 @@ void    Character::use(int idx, ICharacter &target)
 {
     if (this->inv[idx])
         this->inv[idx]->use(target);
+    else
+        std::cout << "nothing at this index." << std::endl;
 }

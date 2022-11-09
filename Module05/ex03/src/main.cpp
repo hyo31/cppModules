@@ -11,11 +11,13 @@ int main()
 	Intern x;
 	Form	*rff;
 
+	std::cout << std::endl;
 	try
 	{	
 		rff = x.makeForm("not a form", "Robot");
 		a.signForm(*rff);
 		a.executeForm(*rff);
+		delete (rff);
 	}
 	catch (Intern::unknownForm &exception)
 	{
@@ -24,9 +26,10 @@ int main()
 	std::cout << std::endl;
 	try
 	{	
-		rff = x.makeForm("presidential pardon", "Robot");
+		rff = x.makeForm("PresidentialPardonForm", "Robot");
 		a.signForm(*rff);
 		a.executeForm(*rff);
+		delete (rff);
 	}
 	catch (Intern::unknownForm &exception)
 	{
@@ -35,16 +38,16 @@ int main()
 	std::cout << std::endl;
 	try
 	{	
-		rff = x.makeForm("shrubbery creation", "Robot");
+		rff = x.makeForm("ShrubberyCreationForm", "Robot");
 		a.signForm(*rff);
 		a.executeForm(*rff);
+		delete (rff);
 	}
 	catch (Intern::unknownForm &exception)
 	{
 		std::cerr << exception.what() << std::endl;
 	}
 	std::cout << std::endl;
-		
 	return 0;
 }
 

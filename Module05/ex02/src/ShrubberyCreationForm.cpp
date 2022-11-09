@@ -1,23 +1,22 @@
 #include "../inc/ShrubberyCreationForm.hpp"
 #include <cstdio>
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : target(target), Form("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("ShrubberyCreationForm", 145, 137), target(target)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : target(copy.target), Form(copy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy), target(copy.target)
 {
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy)
 {
-	*this = copy;
+	(void)copy;
 	return (*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::remove((this->target + "_shrubbery").c_str());
 }
 
 void ShrubberyCreationForm::action(Bureaucrat const &executor) const

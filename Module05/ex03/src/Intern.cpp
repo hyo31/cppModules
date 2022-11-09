@@ -2,31 +2,39 @@
 
 Intern::Intern()
 {
+	std::cout << "Intern created" << std::endl;
 }
 
 Intern::Intern(const Intern &copy)
 {
+	*this = copy;
 }
 
 Intern &Intern::operator=(Intern const &copy)
 {
+	(void)copy;
     return (*this);
 }
 
 Intern::~Intern()
 {
-	delete Forms["robotomy request"];
-	delete Forms["presidential pardon"];
-	delete Forms["shrubbery creation"];
+	std::cout << "Intern died..." << std::endl;
 }
 
 Form    *Intern::makeForm(std::string typeForm, std::string nameForm)
 {
-	Forms.insert(std::make_pair("robotomy request", new RobotomyRequestForm(nameForm)));
-	Forms.insert(std::make_pair("presidential pardon", new PresidentialPardonForm(nameForm)));
-	Forms.insert(std::make_pair("shrubbery creation", new ShrubberyCreationForm(nameForm)));
-	std::cout << "Attempting to create form: " << typeForm << "." << std::endl;
-	if (Forms.find(typeForm) == Forms.end())
+	int ret = -1;
+	Forms[0] = new ShrubberyCreationForm(nameForm);
+	Forms[1] = new RobotomyRequestForm(nameForm);
+	Forms[2] = new PresidentialPardonForm(nameForm);
+	for (int i = 0; i < 3; i++)
+	{
+		if (typeForm == Forms[i]->getName())
+			ret = i;
+		else
+			delete (Forms[i]);
+	}
+	if (ret == -1)
 		throw unknownForm();
-	return (Forms[typeForm]);
+	return (Forms[ret]);
 }

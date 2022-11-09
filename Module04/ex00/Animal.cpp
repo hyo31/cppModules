@@ -59,5 +59,5 @@ std::string const &WrongAnimal::getType() const
 
 void    WrongAnimal::makeSound() const
 {
-    std::cout << "Cant't make any sound :(" << std::endl;
+    std::cout << "Cant't make a wrong sound :(" << std::endl;
 }
