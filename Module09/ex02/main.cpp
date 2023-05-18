@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    sortVector(argv);
+    sort(argv);
 
     return 0;
 }

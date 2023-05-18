@@ -3,10 +3,13 @@
 
 # include <iostream>
 # include <vector>
+# include <deque>
 # include <string>
 # include <cstdio>
 # include <iomanip>
+# include <sys/time.h>
+# include <unistd.h>
 
-void    sortVector(char **input);
+void    sort(char **input);
 
 #endif
