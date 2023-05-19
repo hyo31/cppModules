@@ -5,7 +5,9 @@ RPN::RPN() {
 }
 
 RPN::~RPN() {
-
+    while(!this->_operations.empty()) {
+        this->_operations.pop();
+    }
 }
 
 RPN::RPN(const RPN &copy)
@@ -23,7 +25,7 @@ void    RPN::applyOperations(std::string input) {
     double  num;
     size_t  pos;
 
-    for (int i = 0; input[i]; i++) {
+    for (size_t i = 0; i < input.length(); i++) {
         switch (input[i])
         {
             case '*':
@@ -52,21 +54,28 @@ void    RPN::applyOperations(std::string input) {
                     return;
                 }
                 i = pos;
-
+                
                 this->_operations.push(num);
+
+
+                
                 break;
         }
     }
     
-    while (!this->_operations.empty()) {
-        std::cout << this->_operations.top() << std::endl;
-        this->_operations.pop();
+    std::stack<double>  copy(this->_operations);
+    while (!copy.empty()) {
+        std::cout << copy.top() << " ";
+        copy.pop();
     }
+    std::cout << std::endl;
 }
 
 void    RPN::multiply() {
     double temp;
 
+    if (this->_operations.size() < 2)
+        return;
     temp = this->_operations.top();
     this->_operations.pop();
     this->_operations.top() *= temp;
@@ -75,6 +84,8 @@ void    RPN::multiply() {
 void    RPN::divide() {
     double temp;
 
+    if (this->_operations.size() < 2)
+        return;
     temp = this->_operations.top();
     this->_operations.pop();
     this->_operations.top() /= temp;
@@ -83,6 +94,8 @@ void    RPN::divide() {
 void    RPN::add() {
     double temp;
 
+    if (this->_operations.size() < 2)
+        return;
     temp = this->_operations.top();
     this->_operations.pop();
     this->_operations.top() += temp;
@@ -91,6 +104,8 @@ void    RPN::add() {
 void    RPN::subtract() {
     double temp;
 
+    if (this->_operations.size() < 2)
+        return;
     temp = this->_operations.top();
     this->_operations.pop();
     this->_operations.top() -= temp;

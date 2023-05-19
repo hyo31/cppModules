@@ -25,8 +25,8 @@ void    printResult(std::vector<unsigned int> initial, std::vector<unsigned int>
         std::cout << " " << sortedDeque[i];
     }
     std::cout << "." << std::endl;
-    std::cout << "Time to process a range of \033[1;33m" << amount << "\033[0m elements with std::vector:   " << time1 << " us." << std::endl;
-    std::cout << "Time to process a range of \033[1;33m" << amount << "\033[0m elements with std::deque:    " << time2 << " us." << std::endl;
+    std::cout << "Time to process a range of \033[1;33m" << amount << "\033[0m elements with std::vector:   " << time1 << " µs." << std::endl;
+    std::cout << "Time to process a range of \033[1;33m" << amount << "\033[0m elements with std::deque:    " << time2 << " µs." << std::endl;
 }
 
 std::vector<unsigned int>   parseInput(char **input) {
@@ -34,8 +34,8 @@ std::vector<unsigned int>   parseInput(char **input) {
     unsigned int                num;
 
     for (int i = 1; input[i]; i++) {
-        if (sscanf(input[i], "%u", &num) != 1) {
-            std::cerr << "\033[1;31mError\033[0m" << std::endl;
+        if (sscanf(input[i], "%u", &num) != 1 || input[i][0] == '-') {
+            std::cerr << "\033[1;31mError:  \033[0m" << input[i] << std::endl;
             return response;
         }
         response.push_back(num);
