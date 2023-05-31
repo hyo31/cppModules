@@ -3,12 +3,12 @@
 void    printResult(std::vector<unsigned int> initial, std::vector<unsigned int> sortedVector, std::deque<unsigned int> sortedDeque, float time1, float time2, int amount) {
     std::cout << std::setprecision(8);
     std::cout << "\033[1;31mInitial string: \033[0m";
-    for (int i = 0; initial[i]; i++) {
+    for (size_t i = 0; i < initial.size(); i++) {
         std::cout << " " << initial[i];
     }
     std::cout << "." << std::endl;
     std::cout << "\033[1;92mSorted vector:  \033[0m";
-    for (int i = 0; sortedVector[i]; i++) {
+    for (size_t i = 0; i < sortedVector.size(); i++) {
         if (i == 15) {
             std::cout << " [...]";
             break;
@@ -17,7 +17,7 @@ void    printResult(std::vector<unsigned int> initial, std::vector<unsigned int>
     }
     std::cout << "." << std::endl;
     std::cout << "\033[1;92mSorted deque:   \033[0m";
-    for (int i = 0; sortedDeque[i]; i++) {
+    for (size_t i = 0; i < sortedDeque.size(); i++) {
         if (i == 15) {
             std::cout << " [...]";
             break;
@@ -29,11 +29,11 @@ void    printResult(std::vector<unsigned int> initial, std::vector<unsigned int>
     std::cout << "Time to process a range of \033[1;33m" << amount << "\033[0m elements with std::deque:    " << time2 << " µs." << std::endl;
 }
 
-std::vector<unsigned int>   parseInput(char **input) {
+std::vector<unsigned int>   parseInput(int amount, char **input) {
     std::vector<unsigned int>   response;
     unsigned int                num;
 
-    for (int i = 1; input[i]; i++) {
+    for (int i = 1; i < amount; i++) {
         if (sscanf(input[i], "%u", &num) != 1 || input[i][0] == '-') {
             std::cerr << "\033[1;31mError:  \033[0m" << input[i] << std::endl;
             return response;
@@ -122,18 +122,18 @@ std::deque<unsigned int>    sortDeque(std::deque<unsigned int> D) {
     return D;
 }
 
-void    sort(char **input) {
+void    sort(int amount, char **input) {
     std::vector<unsigned int>   S, parsedInput;
     std::deque<unsigned int>    D;
     float                       timeVector = 0.0, timeDeque = 0.0;
     struct timeval              start, stop;
 
-    parsedInput = parseInput(input);
+    parsedInput = parseInput(amount, input);
     if (!parsedInput.size()) {
         return;
     }
 
-    for (int i = 0; parsedInput[i]; i++) {
+    for (size_t i = 0; i < parsedInput.size(); i++) {
         S.push_back(parsedInput[i]);
         D.push_back(parsedInput[i]);
     }

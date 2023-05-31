@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    sort(argv);
+    sort(argc, argv);
 
     return 0;
 }

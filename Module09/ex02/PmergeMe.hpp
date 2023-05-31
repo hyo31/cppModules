@@ -10,6 +10,6 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-void    sort(char **input);
+void    sort(int amount, char **input);
 
 #endif
